@@ -3,7 +3,7 @@
 ShopLapTop Project is a web application built using the PHP Laravel framework. It allows users to create, edit and delete articles on a sales website.
 
 ## Setting
-To install and run ShopLapTop Project, you need the following requirements:
+To install and run `ShopLapTop` Project, you need the following requirements:
 
 - ```PHP >= 7.3```
 
@@ -43,6 +43,23 @@ php artisan serve
 ```
 http://127.0.0.1:8000/
 ```
+## Instructions for using the email sending function
+- To use the activation email or password sending function for registered accounts, you need to have a Gmail account and enable the mode that allows less secure applications to access your account. You can follow the instructions here.
+- After having a Gmail account, you need to edit mail-related information in the .env file as follows:
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME="yourmail@gmail.com"
+MAIL_PASSWORD=yourpassword
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="yourmail@gmail.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+- You replace `yourmail@gmail.com` and `yourpassword` with your email and password.
+- You restart the virtual server with the `php artisan serve` command
+- You can now use the email sending function when registering, forgetting your password, or changing passwords for accounts.
+
 ## Use
 Project has the following features:
 - Register and login with email authentication;
@@ -60,5 +77,5 @@ Contact Info\
 If you have any questions or suggestions about Laravel Project, you can contact me via:
 
 - Email: hienlemanh2002@gmail.com
-- Facebook: [https://facebook.com/yourname](https://www.facebook.com/profile.php?id=100013412708743)https://www.facebook.com/profile.php?id=100013412708743
+- Facebook: [https://www.facebook.com/profile.php?id=100013412708743]
 ## Thank you for your interest in ShopLaptop Project! 😊
