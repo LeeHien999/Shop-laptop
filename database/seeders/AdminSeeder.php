@@ -27,10 +27,10 @@ class AdminSeeder extends Seeder
                 'id_quyen'          =>  1,
                 'ngay_sinh'         =>  "2002-10-15",
                 'que_quan'          =>  "Đà Nẵng",
-                'so_dien_thoai'     =>  "0333314445",
+                'so_dien_thoai'     =>  "0377191497",
                 'gioi_tinh'         =>  random_int(0, 1),
                 'cccd'              =>  060701023012,
-                'is_block'          =>  random_int(0, 1),
+                'is_block'          =>  0,
             ],
         ]);
     }

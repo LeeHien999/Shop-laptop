@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('ho_va_ten');
             $table->integer('is_block') ;
             $table->integer('tinh_trang');
+            $table->string('active_code')->nullable();
+            $table->string('change_password_code')->nullable();
+            $table->string('checkout_code')->nullable();
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('so_luong');
             $table->string('hinh_anh');
             $table->integer('gia_dieu_chinh');
+            $table->integer('luot_xem')->default(0);
             $table->timestamps();
         });
     }

@@ -22,6 +22,7 @@ class DanhSachTaiKhoan extends Authenticatable
         'is_block',
         'tinh_trang',
         'active_code',
-        'change_password_code'
+        'change_password_code',
+        'checkout_code'
     ];
 }

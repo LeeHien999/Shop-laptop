@@ -15,7 +15,7 @@ class ProductVariants extends Model
         'mau_sac_id',
         'so_luong',
         'hinh_anh',
-        'luot_xem',
         'gia_dieu_chinh',
+        'luot_xem',
     ];
 }
