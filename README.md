@@ -1,9 +1,9 @@
-# ShopLapTop Project
+# ShopLapTopProject
 
-ShopLapTop Project là một ứng dụng web được xây dựng bằng PHP Laravel framework. Nó cho phép người dùng tạo, chỉnh sửa và xóa các bài viết trên một web site bán hàng.
+ShopLapTop Project is a web application built using the PHP Laravel framework. It allows users to create, edit and delete articles on a sales website.
 
-## Cài đặt
-Để cài đặt và chạy ShopLapTop Project, bạn cần có các yêu cầu sau:
+## Setting
+To install and run ShopLapTop Project, you need the following requirements:
 
 - ```PHP >= 7.3```
 
@@ -11,55 +11,54 @@ ShopLapTop Project là một ứng dụng web được xây dựng bằng PHP La
 
 - ```MySQL```
 
-Sau đó, bạn có thể làm theo các bước sau:
+Then you can follow these steps:
 
-- Clone dự án từ GitHub: 
+- Clone project from GitHub:
 ```
 git clone https://github.com/LeeHien999/Shop-laptop.git
 ```
-- Di chuyển vào thư mục dự án: 
+- Move into project folder:
 ```
 cd Shop-laptop
 ```
-- Cài đặt các gói phụ thuộc: 
-``` 
+- Install dependent packages:
+```
 composer install
 ```
-- Sao chép tệp .env.example thành .env và điền các thông tin cần thiết về cơ sở dữ liệu và ứng dụng
-- Chạy các migration để tạo bảng cơ sở dữ liệu: 
+- Copy the .env.example file to .env and fill in the necessary information about the database and application
+- Run migrations to create database tables:
 ```
 php artisan migrate
 ```
-- Chạy các seeder để thêm dữ liệu vào cơ sỡ dữ liệu: 
+- Run seeders to add data to the database:
 ```
 php artisan db:seed
 ```
 
-- Chạy máy chủ ứng dụng: 
+- Run the application server:
 ```
 php artisan serve
 ```
-- Mở trình duyệt và truy cập vào địa chỉ: 
+- Open the browser and access the address:
 ```
 http://127.0.0.1:8000/
 ```
-## Sử dụng
-Project có các tính năng sau: 
-- Đăng ký và đăng nhập với xác thực email; 
-- Tạo, chỉnh sửa và xóa sản phẩm, danh mục, tài khoản, admin với hình ảnh đính kèm; 
-- Xem danh sách và chi tiết các sản phẩm, danh mục, danh sách tài khoản (admin); 
-- Đặt hàng, thêm giỏ hàng, xem chi tiết sản phẩm (client). 
+## Use
+Project has the following features:
+- Register and login with email authentication;
+- Create, edit and delete products, categories, accounts, admins with attached images;
+- View list and details of products, categories, account list (admin);
+- Order, add cart, view product details (client).
 
 
-## Giấy phép
-Một số điểm chính của giấy phép là:
+## License
+Some key points of the license are:
 
-- Bạn có quyền sử dụng, sao chép, sửa đổi và phân phối dự án cho mọi mục đích
-- Bạn không có nghĩa vụ cung cấp mã nguồn cho những người sử dụng dự án của bạn
-- Bạn không chịu trách nhiệm về bất kỳ thiệt hại nào do sử dụng dự án
-Thông tin liên hệ\
-Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào về Laravel Project, bạn có thể liên hệ với tôi qua:
+- You have the right to use, copy, modify and distribute the project for any purpose
+- You are not responsible for any damages caused by using the project
+Contact Info\
+If you have any questions or suggestions about Laravel Project, you can contact me via:
 
 - Email: hienlemanh2002@gmail.com
 - Facebook: [https://facebook.com/yourname](https://www.facebook.com/profile.php?id=100013412708743)https://www.facebook.com/profile.php?id=100013412708743
-## Cảm ơn bạn đã quan tâm đến ShopLaptop Project! 😊
+## Thank you for your interest in ShopLaptop Project! 😊
