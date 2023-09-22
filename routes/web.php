@@ -13,6 +13,7 @@ use App\Http\Controllers\MauSacController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuyenController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ThongKeController;
 use App\Http\Controllers\ThuongHieuController;
 use App\Http\Controllers\TrangChuController;
 use App\Models\DanhSachTaiKhoan;
@@ -80,6 +81,10 @@ Route::group(['prefix' => '/admin', 'middleware' => 'APIAdmin'],function() {
         route::get('/', [MauSacController::class, 'index']);
     });
 
+    Route::group(['prefix' => '/don-hang'], function(){
+        route::get('/', [DonHangController::class, 'orderManager']);
+    });
+
     Route::group(['prefix' => '/kich-thuoc'], function(){
         route::get('/', [KichThuocController::class, 'index']);
     });
@@ -100,6 +105,9 @@ Route::group(['prefix' => '/admin', 'middleware' => 'APIAdmin'],function() {
         route::get('/', [QuyenController::class, 'index']);
     });
 
+    Route::group(['prefix' => '/thong-ke'], function(){
+        route::get('/', [ThongKeController::class, 'index']);
+    });
 });
 
 

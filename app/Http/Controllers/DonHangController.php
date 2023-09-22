@@ -58,6 +58,11 @@ class DonHangController extends Controller
         return view('client.pages.cart.OrderComplete');
     }
 
+    public function orderManager(Request $request)
+    {
+        return view('admin.page.don_hang.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

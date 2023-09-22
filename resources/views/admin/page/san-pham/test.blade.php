@@ -10,9 +10,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h6>Danh sách sản phẩm</h6>
-                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ThemMoiModal">Thêm mới sản
-                        phẩm</button>
+                    <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" v-model="search_value" v-on:keyup="search()">
                 </div>
 
                 <div class="card-body">
@@ -226,7 +224,8 @@
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <img v-bind:src="v.hinh_anh" alt="" style="max-height: 50px;">
+                                                        <img v-bind:src="v.hinh_anh" alt=""
+                                                            style="max-height: 50px;">
                                                     </td>
                                                     <td>
                                                         <input type="text" class="form-control"
@@ -377,16 +376,34 @@
                                         <tbody>
                                             <template v-for="(v, k) in  List_Opt_Edit">
                                                 <tr>
-                                                    <td>@{{ v.ten_cau_hinh }}</td>
-                                                    <td>@{{ v.ten_mau_sac }}</td>
-                                                    <td>@{{ convertToVND(v.gia_dieu_chinh) }}</td>
+                                                    <td>
+                                                        <select name="size" class="form-control"
+                                                            v-model="v.cau_hinh_id">
+                                                            @foreach ($cauhinhs as $k => $v)
+                                                                <option value="{{ $v->id }}">
+                                                                    {{ $v->ten_cau_hinh }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select name="color" class="form-control"
+                                                            v-model="v.mau_sac_id">
+                                                            @foreach ($mausacs as $k => $v)
+                                                                <option value="{{ $v->id }}">{{ $v->ten_mau_sac }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="number" v-model="v.gia_dieu_chinh"
+                                                            class="form-control"></td>
                                                     <td>@{{ v.so_luong }}</td>
                                                     <td><img v-bind:src="v.hinh_anh" alt=""
                                                             style="max-height: 50px;"></td>
                                                     <td>
                                                         <div>
                                                             <button class="btn btn-info">Edit</button>
-                                                            <button class="btn btn-danger">X</button>
+                                                            <button class="btn btn-danger"
+                                                                v-on:click="RemoveOptEdit(k)">X</button>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -455,7 +472,8 @@
                 List_Opt_Edit: [],
                 currentPage: 1,
                 lastPage: 1,
-                hinh_anh_new : '',
+                hinh_anh_new: '',
+                search_value: ''
             },
             created() {
                 this.loadData();
@@ -490,6 +508,10 @@
                     this.List_Opt.splice(index, 1);
                 },
 
+                RemoveOptEdit(index) {
+                    this.List_Opt_Edit.splice(index, 1);
+                },
+
                 PushOpt(value) {
                     var opt2 = Object.assign({}, this.opt);
                     this.List_Opt.push(opt2);
@@ -500,6 +522,21 @@
                     this.List_Opt_Edit.push(opt2);
                 },
 
+                search(page = 1)
+                {
+                    var payload = {
+                        'search_value' : this.search_value
+                    };
+                    axios
+                        .post('{{ Route('ProductSearch') }}', payload, {
+                            page: page,
+                        })
+                        .then((res) => {
+                            this.List_products = res.data.data.data;
+                            this.currentPage = res.data.data.current_page;
+                            this.lastPage = res.data.data.last_page;
+                        });
+                },
                 doiStatus(payload) {
                     axios
                         .post('{{ Route('ProductStatus') }}', payload)
@@ -526,7 +563,7 @@
                 ProUpdate() {
                     this.sanpham_edit.mo_ta = CKEDITOR.instances['mota_edit'].getData();
                     var payload = {
-                        'product': this.sanpham_edit,
+                        'sanpham': this.sanpham_edit,
                         'options': this.List_Opt_Edit,
                     };
                     axios
@@ -538,6 +575,11 @@
                                 this.loadData();
                             } else
                                 toastr.error(res.data.message);
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0], 'Error');
+                            });
                         });
                 },
 

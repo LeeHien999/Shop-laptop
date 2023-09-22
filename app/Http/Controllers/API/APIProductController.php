@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProdRequest;
+use App\Http\Requests\ProdUpdateRequest;
 use App\Models\Product;
 use App\Models\ProductVariants;
 use App\Models\QuyenChucNang;
@@ -145,7 +146,7 @@ class APIProductController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(ProdUpdateRequest $request)
     {
 
         //gán id chức năng cho route chức năng tương ứng rồi check sau
@@ -166,25 +167,40 @@ class APIProductController extends Controller
 
         DB::beginTransaction();
         try {
-            $prod = $request->product;
+            $prod = $request->sanpham;
             $sanpham = Product::find($prod["id"]);
             if ($sanpham) {
-                $sanpham->update($prod);
-                ProductVariants::where('product_id', $sanpham->id)->delete();
-                foreach ($request->options as $k => $v) {
-                    ProductVariants::create([
-                        'product_id' => $sanpham->id,
-                        'cau_hinh_id' => $v["cau_hinh_id"],
-                        'mau_sac_id'    => $v["mau_sac_id"],
-                        'so_luong'      => $v["so_luong"],
-                        'hinh_anh'      => $v["hinh_anh"],
+                $check = Product::where('ten_san_pham', $prod["ten_san_pham"])
+                                ->where('id', '!=', $prod["id"])
+                                ->first();
+                if($check)
+                {
+                    return response()->json([
+                        'status' => 0,
+                        'message' => 'Sản phẩm đã tồn tại!',
                     ]);
                 }
-                DB::commit();
-                return response()->json([
-                    'status' => 1,
-                    'message' => 'Cập nhật thành công',
-                ]);
+                else
+                {
+                    $sanpham->update($prod);
+                    ProductVariants::where('product_id', $sanpham->id)->delete();
+                    foreach ($request->options as $k => $v) {
+                        ProductVariants::create([
+                            'product_id' => $sanpham->id,
+                            'cau_hinh_id' => $v["cau_hinh_id"],
+                            'mau_sac_id'    => $v["mau_sac_id"],
+                            'so_luong'      => $v["so_luong"],
+                            'hinh_anh'      => $v["hinh_anh"],
+                            'gia_dieu_chinh'=> $v['gia_dieu_chinh']
+                        ]);
+                    }
+                    DB::commit();
+                    return response()->json([
+                        'status' => 1,
+                        'message' => 'Cập nhật thành công',
+                    ]);
+                }
+
             } else
                 return response()->json([
                     'status' => 0,
@@ -267,6 +283,36 @@ class APIProductController extends Controller
         $data = Product::join('danh_mucs', 'products.danh_muc_id', 'danh_mucs.id')
             ->join('thuong_hieus', 'products.thuong_hieu_id', 'thuong_hieus.id')
             ->select('products.*', 'thuong_hieus.ten_thuong_hieu', 'danh_mucs.ten_danh_muc')
+            ->orderBy('products.created_at', 'DESC')
+            ->paginate(10);
+
+        return response()->json([
+            'data' => $data
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        // //gán id chức năng cho route chức năng tương ứng rồi check sau
+        // $id_chuc_nang = 101;
+        // $user_login = Auth::guard('admin')->user();
+
+        // //check thằng tài khoản này được cấp quyền gì trước r sau đó kiểm tra chức năng được cho phép của quyền đó
+        // $check = QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+        //     ->where('id_chuc_nang', $id_chuc_nang)
+        //     ->first();
+
+        // if (!$check) {
+        //     return response()->json([
+        //         'status'    => 0,
+        //         'message'   => 'Bạn không có quyền cho chức năng này!',
+        //     ]);
+        // }
+
+        $data = Product::join('danh_mucs', 'products.danh_muc_id', 'danh_mucs.id')
+            ->join('thuong_hieus', 'products.thuong_hieu_id', 'thuong_hieus.id')
+            ->select('products.*', 'thuong_hieus.ten_thuong_hieu', 'danh_mucs.ten_danh_muc')
+            ->where('products.ten_san_pham', 'like', '%'.$request->search_value.'%')
             ->paginate(10);
 
         return response()->json([

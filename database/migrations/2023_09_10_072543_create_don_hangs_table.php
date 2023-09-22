@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('dia_chi');
             $table->string('so_dien_thoai');
             $table->integer('hinh_thuc_thanh_toan')->comment('1: thanh toán khi nhân hàng, 2: Chuyển khoản');
-            $table->integer('trang_thai')->comment('1: đang xử lý, 2: đang giao, 3: đã giao, 0: đã hủy');
+            $table->integer('trang_thai')->comment('1: đang xử lý, 2: đã xác nhận, 3: đang giao, 4: đã giao, 0: đã hủy');
             $table->timestamps();
         });
     }
 
-   
+
     /**
      * Reverse the migrations.
      */

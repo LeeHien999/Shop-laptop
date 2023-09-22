@@ -365,7 +365,7 @@
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="/assets_admin/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
                     <div class="user-info ps-3">
-                        {{-- <p class="user-name mb-0">{{ Auth::guard('admin')->user()->ho_va_ten }}</p> --}}
+                        <p class="user-name mb-0">{{ Auth::guard('admin')->user()->ho_va_ten }}</p>
                         <p class="designattion mb-0">Web Designer</p>
                     </div>
                 </a>

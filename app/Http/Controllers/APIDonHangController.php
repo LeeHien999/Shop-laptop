@@ -76,6 +76,23 @@ class APIDonHangController extends Controller
         }
     }
 
+    public function statusOrder(Request $request)
+    {
+        $check = DonHang::find($request->id);
+        if ($check && (($request->trang_thai == 1) ||  ($request->trang_thai == 2) ||  ($request->trang_thai == 3) ||  ($request->trang_thai == 4) ||  ($request->trang_thai == 0))) {
+            $check->trang_thai = $request->trang_thai;
+            $check->save();
+            return response()->json([
+                'status' => 1,
+                'message' => 'thay đổi trạng thái thành công !'
+            ]);
+        } else
+            return response()->json([
+                'status' => 0,
+                'message' => 'Đơn hàng không tồn tại !'
+            ]);
+    }
+
     public function orderDelete(Request $request)
     {
         DB::beginTransaction();
@@ -118,6 +135,26 @@ class APIDonHangController extends Controller
         }
     }
 
+    public function infoOrder(Request $request)
+    {
+        $data = ChiTietDonHang::join('product_variants', 'product_variants.id', 'chi_tiet_don_hangs.san_pham_id')
+            ->join('products', 'products.id', 'product_variants.product_id')
+            ->join('cau_hinhs', 'cau_hinhs.id', 'product_variants.cau_hinh_id')
+            ->join('mau_sacs', 'mau_sacs.id', 'product_variants.mau_sac_id')
+            ->where('chi_tiet_don_hangs.don_hang_id', $request->id)
+            ->select('chi_tiet_don_hangs.*', 'products.ten_san_pham', 'product_variants.gia_dieu_chinh', 'mau_sacs.ten_mau_sac', 'cau_hinhs.ten_cau_hinh')
+            ->get();
+        if ($data) {
+            return response()->json([
+                'status' => 1,
+                'data' => $data,
+            ]);
+        } else
+            return response()->json([
+                'status' => 0,
+                'message' => 'Không tìm thấy đơn hàng !',
+            ]);
+    }
     public function data(Request $request)
     {
         $user = session()->get('auth');
@@ -128,6 +165,40 @@ class APIDonHangController extends Controller
         ]);
     }
 
+    public function allOrder(Request $request)
+    {
+        $data = DonHang::join('danh_sach_tai_khoans', 'danh_sach_tai_khoans.id', 'don_hangs.user_id')
+            ->select('don_hangs.*', 'danh_sach_tai_khoans.ho_va_ten')
+            ->paginate(10);
+        return response()->json([
+            'status' => 1,
+            'data' => $data,
+        ]);
+    }
+
+    public function deleteOrder(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $check = DonHang::find($request->id);
+            if ($check) {
+                ChiTietDonHang::where('don_hang_id', $check->id)->delete();
+                $check->delete();
+                DB::commit();
+                return response()->json([
+                    'status' => 1,
+                    'message' => 'Xóa đơn hàng thành công'
+                ]);
+            } else
+                return response()->json([
+                    'status' => 0,
+                    'message' => 'Không tìm thấy đơn hàng !'
+                ]);
+        } catch (Exception $e) {
+            Log::error('Lỗi nè'.$e);
+            DB::rollBack();
+        };
+    }
     public function orderDetail(Request $request)
     {
 

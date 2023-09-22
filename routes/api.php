@@ -10,6 +10,7 @@ use App\Http\Controllers\API\APIMauSacController;
 use App\Http\Controllers\API\APIProductController;
 use App\Http\Controllers\API\APIProductVariantController;
 use App\Http\Controllers\API\APIQuyenController;
+use App\Http\Controllers\API\APIThongKeController;
 use App\Http\Controllers\API\APIThuongHieuController;
 use App\Http\Controllers\APIChiTietDonHangController;
 use App\Http\Controllers\APIDonHangController;
@@ -57,7 +58,7 @@ Route::group(['prefix'  =>  '/admin'], function() {
         Route::post('/status', [APIProductController::class, 'status'])->name('ProductStatus');
         Route::post('/update', [APIProductController::class, 'update'])->name('ProductUpdate');
         Route::post('/delete', [APIProductController::class, 'destroy'])->name('ProductDestroy');
-
+        Route::post('/search', [APIProductController::class, 'search'])->name('ProductSearch');
     });
 
     Route::group(['prefix'  =>  '/product-variants'], function() {
@@ -110,6 +111,17 @@ Route::group(['prefix'  =>  '/admin'], function() {
         Route::post('/update', [APIDanhMucController::class, 'update'])->name('DanhMucUpdate');
         Route::post('/delete', [APIDanhMucController::class, 'destroy'])->name('DanhMucDestroy');
 
+    });
+
+    Route::group(['prefix'  => '/thong-ke'], function(){
+        Route::post('/top-view', [APIThongKeController::class, 'topview'])->name('TopViewThongKe');
+    });
+
+    Route::group(['prefix'  => '/don-hang'], function(){
+        Route::post('/all-order', [APIDonHangController::class, 'allOrder'])->name('AllOrder');
+        Route::post('/change-status-order', [APIDonHangController::class, 'statusOrder'])->name('StatusOrder');
+        Route::post('/order-info', [APIDonHangController::class, 'infoOrder'])->name('InfoOrder');
+        Route::post('/delete-order', [APIDonHangController::class, 'deleteOrder'])->name('DeleteOrder');
     });
 
     Route::group(['prefix'  =>  '/danh-sach-tai-khoan'], function() {

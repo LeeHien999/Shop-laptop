@@ -12,7 +12,7 @@
     </div>
     <nav class="navbar navbar-expand-xl w-100">
         <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
                 <a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret"
                     data-bs-toggle="dropdown">
                     <div class="parent-icon"><i class='bx bx-home-circle'></i>
@@ -23,7 +23,7 @@
                     <li> <a class="dropdown-item" href="index.html"><i class="bx bx-right-arrow-alt"></i>Default</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <a class="nav-link" href="/admin/product/">
                 <div class="parent-icon"><i class="fa-solid fa-shoe-prints"></i>
                 </div>
@@ -52,7 +52,7 @@
             <a class="nav-link" href="/admin/danh-sach-tai-khoan/">
                 <div class="parent-icon"><i class="fa-regular fa-address-book"></i>
                 </div>
-                <div class="menu-title">Danh Sách Tài Khoản</div>
+                <div class="menu-title">Tài Khoản</div>
             </a>
             <a class="nav-link" href="/admin/">
                 <div class="parent-icon"><i class="fa-solid fa-user"></i>
@@ -64,7 +64,16 @@
                 </div>
                 <div class="menu-title">Quyền</div>
             </a>
-
+            <a class="nav-link" href="/admin/don-hang/">
+                <div class="parent-icon"><i class="fa-solid fa-list"></i>
+                </div>
+                <div class="menu-title">Đơn hàng</div>
+            </a>
+            <a class="nav-link" href="/admin/thong-ke/">
+                <div class="parent-icon"><i class="fa-solid fa-chart-simple"></i>
+                </div>
+                <div class="menu-title">Thống kê</div>
+            </a>
         </ul>
     </nav>
 
