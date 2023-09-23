@@ -236,8 +236,8 @@ class APIDanhSachTaiKhoanController extends Controller
 
             $data2['ho_va_ten'] = $data['ho_va_ten'];
             $data2['link']      = env('APP_URL') . '/active-account/' . $data['active_code'];
-            // Mail::to($data['email'])->send(new SendMail('Kích hoạt tài khoản', 'client.pages.active_account.active_account_templace', $data2));
-            SendMailJob::dispatch($data['email'], 'kích hoạt tài khoản', 'client.pages.active_account.active_account_templace', $data2);
+            Mail::to($data['email'])->send(new SendMail('Kích hoạt tài khoản', 'client.pages.active_account.active_account_templace', $data2));
+            // SendMailJob::dispatch($data['email'], 'kích hoạt tài khoản', 'client.pages.active_account.active_account_templace', $data2);
             return response()->json([
                 'status'    => 1,
                 'message'   => 'Đã thêm mới tài khoản thành công, vui lòng kiểm tra email để kích hoạt tài khoản !',
@@ -335,8 +335,8 @@ class APIDanhSachTaiKhoanController extends Controller
 
             $data['ho_va_ten'] = $taikhoan->ho_va_ten;
             $data['link']      = env('APP_URL') . '/home/reset-password/' . $taikhoan->change_password_code;
-            // Mail::to($taikhoan->email)->send(new SendMail('Khôi phục mật khẩu', 'client.pages.reset_password.active_reset_password', $data));
-            SendMailJob::dispatch($taikhoan->email, 'Khôi phục mật khẩu', 'client.pages.reset_password.active_reset_password', $data);
+            Mail::to($taikhoan->email)->send(new SendMail('Khôi phục mật khẩu', 'client.pages.reset_password.active_reset_password', $data));
+            // SendMailJob::dispatch($taikhoan->email, 'Khôi phục mật khẩu', 'client.pages.reset_password.active_reset_password', $data);
             return response()->json([
                 'status' => 1,
                 'message' => 'vui lòng kiểm tra mail của bạn'
