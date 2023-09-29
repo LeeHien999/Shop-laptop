@@ -63,9 +63,17 @@ MAIL_FROM_NAME="${APP_NAME}"
 ## Use
 Project has the following features:
 - Register and login with email authentication;
-- Create, edit and delete products, categories, accounts, admins with attached images;
-- View list and details of products, categories, account list (admin);
-- Order, add cart, view product details (client).
+### ADMIN
+- CRUD products.
+- CRUD category.
+- CRUD brand.
+- CRUD configuration.
+- CRUD color.
+- CRUD account, permissions, decentralization, admin account.
+### ClIENT
+- CRUD Orders, cart.
+- Payment orders.
+- view product details.
 
 
 ## License
