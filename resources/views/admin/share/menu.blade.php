@@ -25,7 +25,7 @@
                 </ul>
             </li> --}}
             <a class="nav-link" href="/admin/product/">
-                <div class="parent-icon"><i class="fa-solid fa-shoe-prints"></i>
+                <div class="parent-icon"><i class="fa-solid fa-laptop"></i>
                 </div>
                 <div class="menu-title">Sản phẩm</div>
             </a>
@@ -69,11 +69,21 @@
                 </div>
                 <div class="menu-title">Đơn hàng</div>
             </a>
-            <a class="nav-link" href="/admin/thong-ke/">
-                <div class="parent-icon"><i class="fa-solid fa-chart-simple"></i>
-                </div>
-                <div class="menu-title">Thống kê</div>
-            </a>
+
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret"
+                    data-bs-toggle="dropdown">
+                    <div class="parent-icon"><i class="fa-solid fa-chart-simple"></i>
+                    </div>
+                    <div class="menu-title">Thống kê</div>
+                </a>
+                <ul class="dropdown-menu">
+                    <li> <a class="dropdown-item" href="/admin/thong-ke/top-products"><i class="bx bx-right-arrow-alt"></i>Top sản phẩm</a>
+                    </li>
+                    <li> <a class="dropdown-item" href="/admin/thong-ke/doanh-thu"><i class="bx bx-right-arrow-alt"></i>Doanh thu</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </nav>
 

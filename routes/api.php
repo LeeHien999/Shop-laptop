@@ -115,6 +115,8 @@ Route::group(['prefix'  =>  '/admin'], function() {
 
     Route::group(['prefix'  => '/thong-ke'], function(){
         Route::post('/top-view', [APIThongKeController::class, 'topview'])->name('TopViewThongKe');
+        Route::post('/top-sale', [APIThongKeController::class, 'topsale'])->name('TopSaleThongKe');
+        Route::post('/verenue', [APIThongKeController::class, 'verenue'])->name('DoanhThuThongKe');
     });
 
     Route::group(['prefix'  => '/don-hang'], function(){

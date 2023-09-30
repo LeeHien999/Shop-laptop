@@ -52,10 +52,10 @@
             <div class="col footer-col">
                 <h4>Contact Information</h4>
                 <ul class="colorlib-footer-links">
-                    <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
+                    <li>Đà Nẵng <br> Cẩm Lệ</li>
                     <li><a href="tel://1234567920">+ 1235 2355 98</a></li>
-                    <li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-                    <li><a href="#">yoursite.com</a></li>
+                    <li><a href="mailto:info@yoursite.com">hienlemanh2002@.com</a></li>
+                    <li><a href="https:\\demoshoplaptop.dzloye.com">demoshoplaptop.com</a></li>
                 </ul>
             </div>
         </div>

@@ -70,7 +70,7 @@
                             </div>
                             <div class="item">
                                 <div class="col">
-                                    <h3><a href="#">Our biggest sale yet 50% off all summer shoes</a></h3>
+                                    <h3><a href="#">Our biggest sale yet 50% off all laptops</a></h3>
                                 </div>
                             </div>
                         </div>
@@ -120,8 +120,16 @@
                 axios
                     .post('{{ Route('CountCart') }}')
                     .then((res) => {
-                        this.count = res.data.data;
-                        $('#countofprod').text(this.count);
+                        if(res.data.status == 1)
+                        {
+                            this.count = res.data.data;
+                            $('#countofprod').text(this.count);
+                        }
+                        else
+                        {
+                            $('#countofprod').text(this.count);
+                        }
+
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function(k, v) {

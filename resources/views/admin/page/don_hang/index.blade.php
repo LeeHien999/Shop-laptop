@@ -14,7 +14,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered rounded text-center align-middle">
+                        <table class="table table-bordered rounded text-center align-middle text-nowrap">
                             <thead>
                                 <th>#</th>
                                 <th>Tên tài khoản</th>

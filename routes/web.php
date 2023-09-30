@@ -106,7 +106,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'APIAdmin'],function() {
     });
 
     Route::group(['prefix' => '/thong-ke'], function(){
-        route::get('/', [ThongKeController::class, 'index']);
+        route::get('/top-products', [ThongKeController::class, 'topProducts']);
+        route::get('/doanh-thu', [ThongKeController::class, 'revenue']);
     });
 });
 

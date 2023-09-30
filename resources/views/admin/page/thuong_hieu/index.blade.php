@@ -41,8 +41,6 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h6>Danh sách thương hiệu</h6>
-                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ThemMoiModal">Thêm mới thương
-                        hiệu</button>
                 </div>
 
                 <div class="card-body">

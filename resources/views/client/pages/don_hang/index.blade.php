@@ -35,10 +35,14 @@
                                     </td>
                                     <td>
                                         <button v-if="v.trang_thai==1" class="btn-warning btn">Đang xử lý</button>
+                                        <button v-if="v.trang_thai==2" class="btn-warning btn">Đã xác nhận</button>
+                                        <button v-if="v.trang_thai==3" class="btn-info btn">Đang giao</button>
+                                        <button v-if="v.trang_thai==4" class="btn-success btn">Đã giao</button>
+                                        <button v-if="v.trang_thai==0" class="btn-danger btn">Đã Hủy</button>
                                     </td>
                                     <td>@{{ formatDate(v.created_at) }}</td>
                                     <td>
-                                        <button class="btn btn-danger" v-on:click="deleteCart(v.id)">X</button>
+                                        <button class="btn btn-danger" v-on:click="deleteCart(v.id)" v-if="v.trang_thai == 1">X</button>
                                         <a class="btn btn-success" v-on:click="orderDetail(v.id)" v-bind:href="'/home/order/detail/' + v.id">Chi Tiết</a>
                                     </td>
                                 </tr>

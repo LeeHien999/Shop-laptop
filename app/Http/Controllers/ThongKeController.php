@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 class ThongKeController extends Controller
 {
     //
-    public function index()
+    public function topProducts()
     {
-        return view('admin.page.thong_ke.index');
+        return view('admin.page.thong_ke.top_products');
+    }
+
+    public function revenue()
+    {
+        return view('admin.page.thong_ke.doanh_thu');
     }
 }

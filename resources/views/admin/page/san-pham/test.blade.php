@@ -1,9 +1,15 @@
 @extends('admin.share.master')
 @section('noi_dung')
-    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="ps-3">
-            <h6 class="mb-0 text-uppercase">DANH SÁCH SẢN PHẨM</h6>
-        </div>
+    <div class="page-breadcrumb">
+       <div class="row">
+            <div class="col-3">
+                <h5>DANH SÁCH SẢN PHẨM</h5>
+            </div>
+            <div class="col-9">
+                <button class="btn btn-info float-end mr-5" data-bs-toggle="modal"
+                data-bs-target="#ThemMoiModal">Thêm sản phẩm</button>
+            </div>
+       </div>
     </div>
     <hr />
     <div class="row" id="app">

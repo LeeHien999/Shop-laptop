@@ -8,11 +8,11 @@
                        <div class="col-sm-6 offset-sm-3 text-center slider-text">
                            <div class="slider-text-inner">
                                <div class="desc">
-                                   <h1 class="head-1">Men's</h1>
-                                   <h2 class="head-2">Shoes</h2>
+                                   <h1 class="head-1">Học tập-Văn phòng</h1>
+                                   <h2 class="head-2">Laptop</h2>
                                    <h2 class="head-3">Collection</h2>
-                                   <p class="category"><span>New trending shoes</span></p>
-                                   <p><a href="#" class="btn btn-primary">Shop Collection</a></p>
+                                   <p class="category"><span>New trending Laptop</span></p>
+                                   <p><a href="/home/danh-muc/2" class="btn btn-primary">Shop Collection</a></p>
                                </div>
                            </div>
                        </div>
@@ -26,11 +26,11 @@
                        <div class="col-sm-6 offset-sm-3 text-center slider-text">
                            <div class="slider-text-inner">
                                <div class="desc">
-                                   <h1 class="head-1">Huge</h1>
+                                   <h1 class="head-1">Đồ họa-Kĩ thuật</h1>
                                    <h2 class="head-2">Sale</h2>
                                    <h2 class="head-3"><strong class="font-weight-bold">50%</strong> Off</h2>
-                                   <p class="category"><span>Big sale sandals</span></p>
-                                   <p><a href="#" class="btn btn-primary">Shop Collection</a></p>
+                                   <p class="category"><span>Big sale</span></p>
+                                   <p><a href="/home/danh-muc/4" class="btn btn-primary">Shop Collection</a></p>
                                </div>
                            </div>
                        </div>
@@ -44,11 +44,11 @@
                        <div class="col-sm-6 offset-sm-3 text-center slider-text">
                            <div class="slider-text-inner">
                                <div class="desc">
-                                   <h1 class="head-1">New</h1>
+                                   <h1 class="head-1">Gamming</h1>
                                    <h2 class="head-2">Arrival</h2>
                                    <h2 class="head-3">up to <strong class="font-weight-bold">30%</strong> off</h2>
-                                   <p class="category"><span>New stylish shoes for men</span></p>
-                                   <p><a href="#" class="btn btn-primary">Shop Collection</a></p>
+                                   <p class="category"><span>New stylish laptops</span></p>
+                                   <p><a href="/home/danh-muc/1" class="btn btn-primary">Shop Collection</a></p>
                                </div>
                            </div>
                        </div>
