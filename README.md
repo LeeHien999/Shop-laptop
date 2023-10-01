@@ -1,5 +1,5 @@
 # ShopLapTopProject
-![Alt text](https://th.bing.com/th/id/R.5cd3ed0ea33a8d0ce651542b7ba23131?rik=vuYXBNOaTnqFKw&pid=ImgRaw&r=0)
+
 ShopLapTop Project is a web application built using the PHP Laravel framework. It allows users to create, edit and delete articles on a sales website.
 
 ## Setting
