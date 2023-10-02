@@ -75,7 +75,11 @@ Project has the following features:
 - Payment orders.
 - view product details.
 
-
+## Demo
+- You can preview the web demo at the link below
+- https://demoshoplaptop.dzloye.com/
+- https://demoshoplaptop.dzloye.com/admin/login
+  
 ## License
 Some key points of the license are:
 
