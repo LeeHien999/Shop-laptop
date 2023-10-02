@@ -44,19 +44,19 @@ php artisan serve
 http://127.0.0.1:8000/
 ```
 ## Instructions for using the email sending function
-- To use the activation email or password sending function for registered accounts, you need to have a Gmail account and enable the mode that allows less secure applications to access your account. You can follow the instructions here.
+- To use the function of sending activation email or password to the registered account, you need to have a Gmail account and enable 2-layer security mode to get the key. You can follow the instructions here.
 - After having a Gmail account, you need to edit mail-related information in the .env file as follows:
 ```
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
 MAIL_USERNAME="yourmail@gmail.com"
-MAIL_PASSWORD=yourpassword
+MAIL_PASSWORD=yourkey
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="yourmail@gmail.com"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
-- You replace `yourmail@gmail.com` and `yourpassword` with your email and password.
+- You replace `yourmail@gmail.com` and `yourkey` with your email and key.
 - You restart the virtual server with the `php artisan serve` command
 - You can now use the email sending function when registering, forgetting your password, or changing passwords for accounts.
 
@@ -70,10 +70,12 @@ Project has the following features:
 - CRUD configuration.
 - CRUD color.
 - CRUD account, permissions, decentralization, admin account.
+- statistics
 ### ClIENT
 - CRUD Orders, cart.
 - Payment orders.
 - view product details.
+- comment
 
 ## Demo
 - You can preview the web demo at the link below
