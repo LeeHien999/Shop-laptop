@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\APIAdminController;
+use App\Http\Controllers\API\APIBinhLuanController;
 use App\Http\Controllers\API\APICauHinhController;
 use App\Http\Controllers\API\APIDanhMucController;
 use App\Http\Controllers\API\APIDanhSachTaiKhoanController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\APITrangChuController;
 use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\GiayController;
 use App\Http\Controllers\GioHangController;
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -200,6 +202,10 @@ Route::group(['prefix' => '/client'], function(){
         Route::post('/change-password', [APIDanhSachTaiKhoanController::class, 'changePassword'])->name('ChangePassword');
     });
 
+    Route::group(['prefix' => 'comments'], function(){
+        Route::post('/add-cmt', [APIBinhLuanController::class, 'add'])->name('AddComment');
+        Route::post('/data-cmt', [APIBinhLuanController::class, 'data'])->name('DataComment');
+    });
     Route::group(['prefix' => '/order', 'middleware' => 'APIClient'], function(){
         Route::post('/order-complete', [APIDonHangController::class, 'orderComplete'])->name('OrderComplete');
         Route::post('/data', [APIDonHangController::class, 'data'])->name('OrderData');

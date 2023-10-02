@@ -11,6 +11,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "toastr": "^2.1.4"
+        "toastr": "^2.1.4",
+        "vue-star-rating": "^2.1.0"
     }
 }

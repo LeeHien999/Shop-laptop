@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Jobs\SendMailJob;
 use App\Mail\SendMail;
 use App\Models\DanhMuc;
 use App\Models\DanhSachTaiKhoan;
 use App\Models\QuyenChucNang;
 use Exception;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -222,7 +225,7 @@ class APIDanhSachTaiKhoanController extends Controller
         }
     }
 
-    public function ClientRegister(Request $request)
+    public function ClientRegister(RegisterRequest $request)
     {
         $check = DanhSachTaiKhoan::where('email', $request->email)->first();
         if (!$check) {
@@ -250,7 +253,7 @@ class APIDanhSachTaiKhoanController extends Controller
         }
     }
 
-    public function ClientLogin(Request $request)
+    public function ClientLogin(LoginRequest $request)
     {
         // $check  = Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password]);
         // if($check == true) {
@@ -284,36 +287,42 @@ class APIDanhSachTaiKhoanController extends Controller
         $check      =   DanhSachTaiKhoan::where('email', $request->email)
             // ->where('password', $request->password)
             ->first();
-        $mk_luu     =   $check->password;
-        $mk_nhap    =   $request->password;
+        if ($check) {
+            $mk_luu     =   $check->password;
+            $mk_nhap    =   $request->password;
 
-        if ($check && password_verify($mk_nhap, $mk_luu)) {
-            if($check->tinh_trang == 0)
-            {
+            if (password_verify($mk_nhap, $mk_luu)) {
+                if ($check->tinh_trang == 0) {
+                    return response()->json([
+                        'status'    => 0,
+                        'message'   => 'Tài khoản chưa được kích hoạt!',
+                    ]);
+                }
+                if ($check->is_block == 1) {
+                    return response()->json([
+                        'status'    => 0,
+                        'message'   => 'Tài khoản chưa đã bị khóa!',
+                    ]);
+                }
+                // Ở đây nghĩa là ta check email và password nó giống ở database
+                // Ta cần tạo 1 biến auth và giá trị và thông tin tài khoản của user vừa đăng nhập
+                // Session::start();
+                Session::put('auth', $check);
                 return response()->json([
-                    'status'    => 0,
-                    'message'   => 'Tài khoản chưa được kích hoạt!',
+                    'status'    => 1,
+                    'message'   => 'đăng nhập thành công !',
                 ]);
             }
-            if($check->is_block == 1)
-            {
-                return response()->json([
-                    'status'    => 0,
-                    'message'   => 'Tài khoản chưa đã bị khóa!',
-                ]);
-            }
-            // Ở đây nghĩa là ta check email và password nó giống ở database
-            // Ta cần tạo 1 biến auth và giá trị và thông tin tài khoản của user vừa đăng nhập
-            // Session::start();
-            Session::put('auth', $check);
+            else
             return response()->json([
-                'status'    => 1,
-                'message'   => 'Đã đăng nhập thành công!',
+                'status'    => 0,
+                'message'   => 'mật khẩu không hợp lệ!',
             ]);
+
         } else {
             return response()->json([
                 'status'    => 0,
-                'message'   => 'Tài khoản hoặc mật khẩu không đúng!',
+                'message'   => 'tài khoản không tồn tại!',
             ]);
         }
     }

@@ -68,7 +68,7 @@
                                 </a>
                                 <div class="desc">
                                     <h2><a v-bind:href="'/home/product-detail/' + v.id">{{ $v->ten_san_pham }}</a></h2>
-                                    <span class="price text-danger"><b>{{ $v->gia }} ₫</b></span>
+                                    <span class="price text-danger"><b>{{number_format($v->gia, 0, ',', '.')}} ₫</b></span>
                                 </div>
                             </div>
                         </div>

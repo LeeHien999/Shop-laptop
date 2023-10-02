@@ -22,4 +22,8 @@ class TestController extends Controller
 
         dd($products2->toArray());
     }
+
+    public function add(Request $request){
+        dd($request->all());
+    }
 }

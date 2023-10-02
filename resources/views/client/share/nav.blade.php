@@ -9,8 +9,8 @@
                     <div class="search-wrap">
                         <div class="form-group">
                             <input type="text" class="form-control search" placeholder="Search" id="ttsearch">
-                            <button class="btn btn-primary submit-search text-center"id="btn_search"  type="button" ><i
-                                    class="icon-search" ></i></button>
+                            <button class="btn btn-primary submit-search text-center"id="btn_search" type="button"><i
+                                    class="icon-search"></i></button>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <li class="has-dropdown"><a href="#">Thương hiệu</a>
                             <ul class="dropdown">
                                 <template v-for="(v, k) in list_thuonghieu">
-                                    <li><a v-bind:href="'/home/thuong-hieu/'+v.id">@{{ v.ten_thuong_hieu}}</a></li>
+                                    <li><a v-bind:href="'/home/thuong-hieu/'+v.id">@{{ v.ten_thuong_hieu }}</a></li>
                                 </template>
                             </ul>
                         </li>
@@ -44,7 +44,7 @@
                                     <li><a href="/home/register/">Register</a></li>
                                 @else
                                     <li><a href="#"></a></li>
-                                    <li><a href="/home/order/">Quản lý đơn hàng</a></li>
+                                    <li><a href="/home/order/">Đơn hàng</a></li>
                                     <li><a href="#" v-on:click="logout()">Logout</a></li>
                                 @endif
 
@@ -120,13 +120,10 @@
                 axios
                     .post('{{ Route('CountCart') }}')
                     .then((res) => {
-                        if(res.data.status == 1)
-                        {
+                        if (res.data.status == 1) {
                             this.count = res.data.data;
                             $('#countofprod').text(this.count);
-                        }
-                        else
-                        {
+                        } else {
                             $('#countofprod').text(this.count);
                         }
 
@@ -173,7 +170,16 @@
         },
     });
 
-    $('#btn_search').click(function(){
+    $('#ttsearch').keydown(function(event) {
+        if (event.keyCode === 13) {
+            var ttsearch = $('#ttsearch').val();
+            window.location.href = "/home/search/" + ttsearch;
+            return false; // Ngăn chặn hành động mặc định của phím Enter
+        }
+    });
+
+
+    $('#btn_search').click(function() {
         var ttsearch = $('#ttsearch').val();
         window.location.href = "/home/search/" + ttsearch;
     });

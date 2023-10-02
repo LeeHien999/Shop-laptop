@@ -158,7 +158,7 @@ class APIDonHangController extends Controller
     public function data(Request $request)
     {
         $user = session()->get('auth');
-        $data = DonHang::where('user_id', $user->id)->get();
+        $data = DonHang::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
         return response()->json([
             'status' => 1,
             'data' => $data,
@@ -169,6 +169,7 @@ class APIDonHangController extends Controller
     {
         $data = DonHang::join('danh_sach_tai_khoans', 'danh_sach_tai_khoans.id', 'don_hangs.user_id')
             ->select('don_hangs.*', 'danh_sach_tai_khoans.ho_va_ten')
+            ->orderBy('created_at', 'DESC')
             ->paginate(10);
         return response()->json([
             'status' => 1,

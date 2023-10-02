@@ -16,7 +16,7 @@ class TrangChuController extends Controller
     //
     public function index()
     {
-        $bestSales = Product::orderBy('luot_xem', 'DESC')
+        $bestSales = Product::orderBy('luot_xem', 'ASC')
             ->limit(8)
             ->get();
 
