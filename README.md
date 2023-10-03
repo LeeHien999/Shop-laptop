@@ -81,6 +81,27 @@ Project has the following features:
 - You can preview the web demo at the link below
 - https://demoshoplaptop.dzloye.com/
 - https://demoshoplaptop.dzloye.com/admin/login
+- some demo images
+  ![Home 1](img-demo/home_1.png)
+
+  
+  ![Home 2](img-demo/home_2.jpeg)
+
+
+  ![product 1](img-demo/product_1.jpeg)
+
+  
+  ![product 2](img-demo/product_2.jpeg)
+
+
+  ![product 3](img-demo/product_3.jpeg)
+
+
+  ![admin 1](img-demo/admin_1.jpeg)
+
+  
+  ![admin 2](img-demo/admin_2.jpeg)
+
   
 ## License
 Some key points of the license are:
