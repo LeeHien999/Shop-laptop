@@ -9,7 +9,7 @@ To install and run `ShopLapTop` Project, you need the following requirements:
 
 - ```Composer```
 
-- ```MySQL```
+- ```PHPMyAdmin```
 
 Then you can follow these steps:
 
